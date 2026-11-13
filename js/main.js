@@ -108,6 +108,9 @@ function switchTab(tabId, clickedButton) {
   document.getElementById(tabId).classList.add("active");
   clickedButton.classList.add("active");
 
+  // Simpan tab di URL agar bisa dibagikan langsung (misal: /#english)
+  history.replaceState(null, "", "#" + tabId);
+
   // Auto scroll ke konten jika di layar HP
   if (window.innerWidth <= 1024) {
     document
@@ -115,6 +118,12 @@ function switchTab(tabId, clickedButton) {
       .scrollIntoView({ behavior: "smooth" });
   }
 }
+
+// Buka tab sesuai URL saat halaman dimuat (misal: /#english)
+const initialTabBtn = document.querySelector(
+  `.nav-btn[data-tab="${location.hash.slice(1)}"]`,
+);
+if (initialTabBtn) switchTab(initialTabBtn.dataset.tab, initialTabBtn);
 
 // --- 2. FITUR TEMA GELAP / TERANG ---
 function toggleTheme() {
@@ -284,6 +293,30 @@ const translations = {
       "Sistem izin keluar-masuk siswa SMK Negeri 4 Tasikmalaya. Mencatat data murid, alasan izin, dan guru piket, dengan tampilan detail murid di ponsel serta ekspor data ke PDF dan Excel.",
     w6_desc:
       "Website portofolio pribadi ini: menampilkan profil, riwayat pendidikan dan pengalaman, serta karya. Dilengkapi mode gelap/terang, dua bahasa (Indonesia/Inggris), animasi pembuka, dan tampilan responsif di desktop maupun ponsel.",
+    nav_eng: "B. Inggris",
+    eng_desc:
+      "Kumpulan tugas dan jawaban UTS mata kuliah Professional English, berlatih memperkenalkan diri dan berkomunikasi secara jelas dan profesional dalam bahasa Inggris.",
+    eng_tasks: "Tugas",
+    eng_exam: "Ujian Tengah Semester · Gasal 2026/2027",
+    open_drive: "Buka di Google Drive",
+    t1_meta: "Tugas 1",
+    t2_meta: "Pertemuan 2",
+    t3_meta: "Pertemuan 3",
+    t4_meta: "Tugas 4",
+    uts_a_meta: "UTS · Bagian A",
+    uts_b_meta: "UTS · Bagian B",
+    t1_d:
+      "Video singkat memperkenalkan diri dalam bahasa Inggris: siapa saya, tempat saya kuliah, dan hal yang saya minati.",
+    t2_d:
+      "Surat keluhan formal untuk barang belanja online yang tidak sesuai deskripsi, beserta pesan singkat yang profesional.",
+    t3_d:
+      "Penjelasan latar belakang skripsi saya dan jurnal akademik berbahasa Inggris yang saya jadikan referensi.",
+    t4_d:
+      "Curriculum vitae (CV) profesional dalam bahasa Inggris yang memuat pendidikan, pengalaman, keahlian, dan prestasi.",
+    uts_a_d:
+      "Jawaban UTS bagian A: surat lamaran kerja formal dalam bahasa Inggris untuk posisi web developer.",
+    uts_b_d:
+      "Jawaban UTS bagian B: video tiga menit dalam bahasa Inggris tentang keahlian teknis yang saya kembangkan dan bagaimana keahlian itu menyiapkan saya untuk posisi tersebut.",
   },
   en: {
     loc: "Location",
@@ -397,6 +430,30 @@ const translations = {
       "Student exit/entry permit system for SMK Negeri 4 Tasikmalaya. Records student data, permit reasons, and duty teachers, with a mobile student detail view and PDF/Excel data export.",
     w6_desc:
       "This personal portfolio website: showcases my profile, education and experience history, and works. Features dark/light mode, two languages (Indonesian/English), an intro animation, and a responsive layout on desktop and mobile.",
+    nav_eng: "English",
+    eng_desc:
+      "A collection of assignments and midterm answers from my Professional English course, practising how to introduce myself and communicate clearly and professionally in English.",
+    eng_tasks: "Assignments",
+    eng_exam: "Midterm Exam · Odd Semester 2026/2027",
+    open_drive: "Open in Google Drive",
+    t1_meta: "Assignment 1",
+    t2_meta: "Meeting 2",
+    t3_meta: "Meeting 3",
+    t4_meta: "Assignment 4",
+    uts_a_meta: "Midterm · Part A",
+    uts_b_meta: "Midterm · Part B",
+    t1_d:
+      "A short video introducing myself in English: who I am, where I study, and what I'm passionate about.",
+    t2_d:
+      "A formal complaint letter for an online purchase that didn't match its description, plus short professional messages.",
+    t3_d:
+      "An explanation of my thesis background and the English-language academic journal I used as a reference.",
+    t4_d:
+      "A professional curriculum vitae (CV) in English covering my education, experience, skills, and achievements.",
+    uts_a_d:
+      "Midterm answer for Part A: a formal job application letter in English for a web developer position.",
+    uts_b_d:
+      "Midterm answer for Part B: a three-minute English video about the technical skills I have developed and how they prepare me for the position.",
   },
 };
 
