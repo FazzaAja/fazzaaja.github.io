@@ -266,13 +266,17 @@ h4,
 }
 
 .btn-download {
+  display: block;
   background: var(--gradient-primary);
   color: var(--color-secondary);
   border: none;
   padding: 18px;
   border-radius: 16px;
   cursor: pointer;
+  font-size: 13px;
   font-weight: 700;
+  text-align: center;
+  text-decoration: none;
   width: 100%;
   transition: var(--transition-smooth);
   text-transform: uppercase;
